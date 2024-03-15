@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Car Search Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+
+<body>
+    <div>
+        <div class="cover relativeposition">
+            <img class="bgimage" src="../static/images/audiRS7.jpg" alt="">
+        </div>
+
+        <div class="searchengineapp" class="container">
+            <div class="topleft">
+                <h1>Welcome to the car search engine!</h1>
+                <form action="/search/" method="GET" class="formsearch">
+                    <label for="query">Search for cars:</label>
+                    <input type="text" id="query" name="q">
+                    <button type="submit">Search</button>
+                </form>
+                <h2>Recommendations:</h2>
+                {% if message %}
+                <p>{{ message }}</p>
+                {% else %}
+                <table border="1" class="center tablerecommendations">
+                    <thead>
+                        <tr>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Type</th>
+                            <th>Logo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for car in recommended_cars %}
+                        <tr>
+                            <td>{{ car['Make'] }}</td>
+                            <td>{{ car['Model'] }}</td>
+                            <td>{{ car['Type'] }}</td>
+                            <td>
+                                <div class="car-logo">
+                                    {% if car['Make']|lower + '.png' %}
+                                    <img src="{{ url_for('static', filename='images/logos/' + car['Make'] + '.png') }}"
+                                        alt="{{ car['Make'] }} logo">
+                                    {% else %}
+                                    <img src="{{ url_for('static', filename='images/logos/default.png') }}"
+                                        alt="{{ car['Make'] }} logo (not found)">
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    <div class="result container">
+        <h1>Car Search Results</h1>
+        {% if message %}
+        <p>{{ message }}</p>
+        {% else %}
+        {% if cars %}
+        <table style="border: 1px solid green;" class="center resultsearchtable container">
+            <thead>
+                <tr>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>Origin</th>
+                    <th>Transmission</th>
+                    <th>MSRP</th>
+                    <th>Invoice</th>
+                    <th>Engine Size</th>
+                    <th>Cylinders</th>
+                    <th>Horsepower</th>
+                    <th>MPG City</th>
+                    <th>MPG Highway</th>
+                    <th>Weight</th>
+                    <th>Wheelbase</th>
+                    <th>Length</th>
+                    <th>Logo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                <tr>
+                    <td>{{ car['Make'] }}</td>
+                    <td>{{ car['Model'] }}</td>
+                    <td>{{ car['Type'] }}</td>
+                    <td>{{ car['Origin'] }}</td>
+                    <td>{{ car['DriveTrain'] }}</td>
+                    <td>{{ car['MSRP'] }}</td>
+                    <td>{{ car['Invoice'] }}</td>
+                    <td>{{ car['EngineSize'] }}</td>
+                    <td>{{ car['Cylinders'] }}</td>
+                    <td>{{ car['Horsepower'] }}</td>
+                    <td>{{ car['MPG_City'] }}</td>
+                    <td>{{ car['MPG_Highway'] }}</td>
+                    <td>{{ car['Weight'] }}</td>
+                    <td>{{ car['Wheelbase'] }}</td>
+                    <td>{{ car['Length'] }}</td>
+                    <td>
+                        <!-- 
+                        <div class="car-logo">
+                        <img src="data:image/png;base64,{{ car['Logo'] }}" alt="{{ car['Make'] }} Logo" style="width: 50px;">
+                        </div>
+                    -->
+                        <div class="car-logo">
+                            {% if car['Make']|lower + '.png' %}
+                            <img src="{{ url_for('static', filename='images/logos/' + car['Make'] + '.png') }}"
+                                alt="{{ car['Make'] }} logo">
+                            {% else %}
+                            <img src="{{ url_for('static', filename='images/logos/default.png') }}"
+                                alt="{{ car['Make'] }} logo (not found)">
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No results found for your search.</p>
+        {% endif %}
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+
+</html>

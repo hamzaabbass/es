@@ -1,0 +1,107 @@
+.searchengineapp h2{
+    margin-top: 2rem;
+}
+
+.tablerecommendations{
+    background-color: rgba(25, 67, 99, 0.346);
+}
+
+.formsearch input{
+    background-color: rgba(25, 67, 99, 0.597);
+    color: white;
+    font-size: 1rem;
+}
+
+.formsearch button{
+    color: rgba(25, 67, 99, 0.825);
+    background-color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.formsearch label{
+    font-size: 2rem;
+}
+
+.center {
+    text-align: center;
+    justify-content: center;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.car-logo {
+    width: 2rem;
+    height: auto;
+    margin: 1rem;
+}
+
+.flexlisterecommandation{
+    display: flex;
+    flex-direction: row;
+}
+
+
+/*
+.searchengineapp{
+    background: url(../images/audiRS7.jpg);
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+}
+*/
+
+
+.cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.424) 100%, rgba(0, 0, 0, 0.418)80%);
+    width: 100%;
+    height: 100%;
+}
+
+
+.topleft{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    color: white;
+}
+
+.relativeposition{
+    position: relative;
+}
+
+.bottomright{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    padding: 2rem;
+    color: white;
+}
+
+.top{
+    position: absolute;
+    top: 0;
+}
+
+.bgimage{
+    width: 100%;
+    height: 100%;
+}
+
+.resultsearchtable{
+    background-color: rgba(25, 67, 99, 0.389);
+    font-size: 0.7rem;
+}
+
+.searchresultcntnts h1{
+    color: rgba(25, 67, 99, 0.597);
+    padding-top: 2rem;
+}
